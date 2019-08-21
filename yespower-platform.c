@@ -18,7 +18,9 @@
  * SUCH DAMAGE.
  */
 
+#ifdef __unix__
 #include <sys/mman.h>
+#endif
 
 #define HUGEPAGE_THRESHOLD		(12 * 1024 * 1024)
 

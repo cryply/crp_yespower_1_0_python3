@@ -1,4 +1,5 @@
 # Copyright 2013-2018 Alexander Peslyak
+# Copyright 2019 CranePay Devs.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -64,8 +65,21 @@ yespower-opt.o: yespower-platform.c yespower.h
 tests.o: yespower.h
 benchmark.o: yespower.h
 
+build:
+	python3 setup.py build
+
+sudo-install:
+	sudo python3 setup.py install
+
 clean:
 	$(RM) $(PROJ)
 	$(RM) $(OBJS_TESTS) $(OBJS_BENCHMARK)
 	$(RM) $(OBJS_RM)
+	$(RM) -Rf ./build
+	$(RM) -Rf ./crp_yespower_1_0.egg-info
+	$(RM) -Rf ./dist
 	$(RM) TESTS-OUT
+	python3 setup.py clean
+
+sudo-clean:
+	sudo python3 setup.py clean
